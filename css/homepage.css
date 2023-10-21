@@ -1,0 +1,101 @@
+body {
+    background-image: url("../img/background.jpg");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-attachment: fixed;
+    webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    height:100%;
+    width:100%;
+}
+
+.parent {
+    display: flex;
+    flex-direction: column;
+}
+
+/* quote */
+.quote {
+    background-color: rgb(0, 0, 0, 80%);
+    display: flex;
+    align-items: start;
+    margin-top: 50px;
+    margin-right: 50%;
+    margin-bottom: 5%;
+}
+.quote div p {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 200%;
+    font-style: italic;
+    color:white;
+    padding-left: 30px;
+    margin-bottom: 0;
+
+}
+.quote div p+p {
+    color: rgba(255,255,255,80%);
+    font-size: 150%;
+    font-weight: bold;
+    font-style: inherit;
+    display: grid;
+    justify-items: end;
+    padding-top: 5px;
+    padding-right: 20px;
+    text-transform: uppercase;
+}
+
+.quote div {
+    display: flex;
+    flex-direction: column;
+}
+
+.circle-image{
+    display: inline-block;
+    border-radius: 50%;
+    overflow: hidden;
+    width: auto;
+    height: auto;
+}
+
+.circle-image img{
+    object-fit: cover;
+}
+
+.sponsorsText {
+    color: white;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 100%;
+    padding-left: 50px;
+    padding-top: 10px;
+}
+
+/* text */
+.textOfHomePage {
+    margin-right: 50%;
+    margin-top: 50px;
+    padding-top: 10px;
+    background-color: rgb(0, 0, 0, 80%);
+    display: flex;
+    flex-direction: column;
+
+}
+.textOfHomePage h1 {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 300%;
+    color:white;
+    padding-left: 5px;
+}
+.textOfHomePage p {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 100%;
+    color:white;
+    padding-left: 5px;
+}
+
+.buttonAddYouHero {
+    padding-left: 10px;
+    padding-top: 10px;
+}
+

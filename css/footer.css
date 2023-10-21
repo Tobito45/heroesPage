@@ -1,0 +1,11 @@
+.Footer {
+    background-color: rgba(1,1,1,80%);
+}
+.Footer span {
+    color: white;
+    font-family: 'Open Sans', sans-serif;
+}
+.Footer li {
+    margin-right: 10px;
+    color: white !important;
+}
