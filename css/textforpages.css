@@ -1,0 +1,22 @@
+/* text */
+.textOfMainPage {
+    margin-right: 50%;
+    margin-top: 50px;
+    padding-top: 10px;
+    background-color: rgb(0, 0, 0, 80%);
+    display: flex;
+    flex-direction: column;
+
+}
+.textOfMainPage h1 {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 300%;
+    color:white;
+    padding-left: 5px;
+}
+.textOfMainPage p {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 100%;
+    color:white;
+    padding-left: 5px;
+}

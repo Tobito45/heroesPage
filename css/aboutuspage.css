@@ -1,0 +1,16 @@
+body {
+    background-image: url("../img/backgroundAboutUs.jpg");
+}
+.parent {
+    display: flex;
+    flex-direction: column;
+}
+.Footer {
+    margin-top: auto;
+}
+.textOfMainPage h1 {
+    font-size: 350%;
+}
+.textOfMainPage {
+    margin-bottom: 40px;
+}
