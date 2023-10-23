@@ -1,0 +1,93 @@
+body {
+    background-color: #1e2027 !important;
+}
+.parent {
+    justify-content: center;
+}
+
+
+.splide {
+    width: 30%;
+    height: 40%;
+}
+
+.splide__slide img {
+    margin-left: 0px;
+    width: 500px;
+    height: 300px;
+}
+
+.slider__item__div {
+    display: flex;
+    justify-content: space-between
+}
+
+.textCharacters h1{
+    font-family: 'Open Sans', sans-serif;
+    font-size: 200%;
+    font-weight: bold;
+    color: white;
+    margin-left: 5%;
+    margin-top: 3%;
+    text-align: right;
+}
+
+.textCharacters button {
+    text-align: left;
+    margin-right: 20px;
+}
+
+.textCharacters {
+    display: flex;
+    flex-direction: row;
+    margin-top: 10px;
+    margin-left: 20px;
+    justify-content: space-between;
+}
+
+.characters {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+.characters img {
+    display: block;
+    height: 22vw;
+    width: auto;
+    padding-bottom: 40px;
+
+}
+.characters p {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 100%;
+    font-weight: bold;
+    color: white;
+}
+
+.characters div  {
+    background-image: url("/img/charactersPage/cirkulTest.png");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 80% 60%;
+    padding-top: 4%;
+    height:30%;
+    width:30%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.charactersSliders {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    margin-bottom: 50px;
+
+}
+
+.charactersSliders h1 {
+    margin-top: 50px;
+    margin-left: 0;
+}
+

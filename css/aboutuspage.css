@@ -1,9 +1,5 @@
 body {
-    background-image: url("../img/backgroundAboutUs.jpg");
-}
-.parent {
-    display: flex;
-    flex-direction: column;
+    background-image: url("../img/backgrounds/backgroundAboutUs.jpg");
 }
 .Footer {
     margin-top: auto;

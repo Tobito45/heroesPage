@@ -1,10 +1,5 @@
 body {
-    background-image: url("../img/background.jpg");
-}
-
-.parent {
-    display: flex;
-    flex-direction: column;
+    background-image: url("../img/backgrounds/background.jpg");
 }
 
 /* quote */
@@ -15,6 +10,7 @@ body {
     margin-top: 50px;
     margin-right: 50%;
     margin-bottom: 5%;
+    padding-top: 10px;
 }
 .quote div p {
     font-family: 'Open Sans', sans-serif;

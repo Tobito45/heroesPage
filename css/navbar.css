@@ -31,6 +31,7 @@
 .navbar-nav>li a img{
     display: none;
 }
+
 .navbar-nav>li a:hover,.navbar-nav>li a:hover img, .navbar-nav>li a img:hover, .navbar-nav>li .selectedNavItem{
     color: #70D907 !important;
     padding-bottom: 0;
