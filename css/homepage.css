@@ -7,10 +7,10 @@ body {
     background-color: rgb(0, 0, 0, 80%);
     display: flex;
     align-items: start;
-    margin-top: 50px;
-    margin-right: 50%;
-    margin-bottom: 5%;
+    margin: 50px 50% 5% 5%;
     padding-top: 10px;
+    padding-left: 10px;
+    padding-bottom: 10px;
 }
 .quote div p {
     font-family: 'Open Sans', sans-serif;
@@ -55,5 +55,5 @@ body {
 .buttonAddYouHero {
     padding-left: 10px;
     padding-top: 10px;
+    margin-left: 5%;
 }
-

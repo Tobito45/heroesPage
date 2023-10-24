@@ -2,11 +2,20 @@ body {
     background-image: url("../img/backgrounds/backgroundAboutUs.jpg");
 }
 .Footer {
-    margin-top: auto;
+    margin-top: 1%;
 }
+
 .textOfMainPage h1 {
     font-size: 350%;
+    margin-bottom: 20px;
 }
 .textOfMainPage {
     margin-bottom: 40px;
+    margin-left: 7%;
+    padding: 15px;
+}
+
+.textOfMainPage p {
+    font-size: 150%;
+    margin-bottom: 30px;
 }
