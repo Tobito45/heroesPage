@@ -57,3 +57,8 @@ body {
     padding-top: 10px;
     margin-left: 5%;
 }
+@media (max-width: 768px) {
+    .quote {
+        margin: 50px 10% 5% 5%;
+    }
+}

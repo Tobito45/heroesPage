@@ -22,3 +22,9 @@
     color:white;
     padding-left: 5px;
 }
+
+@media (max-width: 768px) {
+    .textOfMainPage {
+        margin-right: 10%;
+    }
+}
