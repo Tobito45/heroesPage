@@ -4,6 +4,7 @@
 .Footer span {
     color: white;
     font-family: 'Open Sans', sans-serif;
+    margin-left: 50px;
 }
 .Footer li {
     margin-right: 10px;
