@@ -1,0 +1,49 @@
+.characters {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+
+
+.characters img {
+    display: block;
+    height: 22vw;
+    width: auto;
+    padding-bottom: 40px;
+
+}
+.characters p {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 100%;
+    font-weight: bold;
+    color: white;
+}
+
+.characters div  {
+    background-image: url("../img/charactersPage/cirkulTest.png");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 80% 60%;
+    padding-top: 4%;
+    height:30%;
+    width:30%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+@media (max-width: 768px) {
+    .characters {
+        flex-wrap: wrap;
+    }
+    .characters div {
+        width: 50%;
+        height: 50%;
+    }
+    .characters img {
+        height: 50vw;
+        width: auto;
+    }
+
+}

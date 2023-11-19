@@ -1,0 +1,116 @@
+body {
+    background-color: #1e2027 !important;
+}
+
+.textName {
+    margin-top: 10px;
+    margin-bottom: 5px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.textName h1 {
+    color: #70D907;
+    font-weight: bold;
+
+}
+.textName p {
+    color: white;
+}
+.textName p::before, .textName p::after {
+    content: "“";
+    color: #70D907;
+}
+
+.heroImageAndInfo {
+    display: flex;
+    flex-direction: row;
+}
+.heroImageAndInfo p{
+    color: white;
+    margin-left: 30px;
+    font-size: 18px;
+}
+.heroInfo tr td:nth-child(1) p{
+    color: #70D907;
+}
+
+.heroImage {
+    background-image: url("../img/charactersPage/cirkulTest.png");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 70% 70%;
+    height:30%;
+    width:40%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.heroImage img {
+    height: 34vw;
+    width: auto;
+}
+.heroInfo {
+    display: flex;
+    flex-direction: column;
+    margin-top: 45px;
+    margin-left: 40px;
+}
+
+.Capitol, .Gallery {
+    margin: 5% 2% 3%;
+}
+
+.Capitol h1, .Gallery h1 {
+    color: white;
+    padding-bottom: 10px;
+    border-bottom: 1px solid;
+}
+.Capitol p {
+    color: white;
+    font-size: 20px;
+    margin-top: 2%;
+}
+.Capitol img {
+    height: 30%;
+    width: 20%;
+    margin-left: 1%;
+    margin-right: 1%;
+    margin-top: 1%;
+}
+.Capitol div {
+    display: flex;
+    flex-direction: row;
+}
+@media (max-width: 768px) {
+    .heroImageAndInfo {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    .heroImage {
+        background-image: url("../img/charactersPage/cirkulTest.png");
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: 70% 70%;
+        height:100%;
+        width:90%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    .heroImage img {
+        height: 80vw;
+        width: auto;
+    }
+    .Capitol div {
+        display: flex;
+        flex-direction: column;
+    }
+    .Capitol img {
+        height: auto;
+        width: auto;
+    }
+}
+
