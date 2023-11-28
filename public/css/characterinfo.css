@@ -1,6 +1,12 @@
 body {
     background-color: #1e2027 !important;
 }
+input {
+    background-color: #1e2027;
+    border: 2px solid #ccc;
+    outline: none;
+    color: white;
+}
 
 .textName {
     margin-top: 10px;
@@ -10,10 +16,9 @@ body {
     align-items: center;
 }
 
-.textName h1 {
+.textName h1, .textName div:first-child input{
     color: #70D907;
     font-weight: bold;
-
 }
 .textName p {
     color: white;
@@ -46,11 +51,16 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
+    flex-direction: column
 }
 .heroImage img {
     height: 34vw;
     width: auto;
 }
+.heroImage form {
+    margin-top: 15px;
+}
+
 .heroInfo {
     display: flex;
     flex-direction: column;
@@ -62,7 +72,7 @@ body {
     margin: 5% 2% 3%;
 }
 
-.Capitol h1, .Gallery h1 {
+.Capitol .CapitolHeader, .Gallery h1 {
     color: white;
     padding-bottom: 10px;
     border-bottom: 1px solid;
@@ -72,17 +82,26 @@ body {
     font-size: 20px;
     margin-top: 2%;
 }
-.Capitol img {
+.Capitol .imageCapitol {
     height: 30%;
     width: 20%;
     margin-left: 1%;
     margin-right: 1%;
     margin-top: 1%;
+    flex-direction: column;
+
 }
+
 .Capitol div {
     display: flex;
     flex-direction: row;
 }
+
+textarea {
+    margin-top: 2% !important;
+    resize: none !important;
+}
+
 @media (max-width: 768px) {
     .heroImageAndInfo {
         display: flex;
