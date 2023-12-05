@@ -2,20 +2,33 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-
-    <script src="https://cdn.tiny.cloud/1/no-api-key/tinymce/6/tinymce.min.js" referrerpolicy="origin"></script>
-    <script>
-        tinymce.init({
-            selector: '#mytextarea'
-        });
-    </script>
-
-    <link rel="stylesheet" href="../css/charactersList.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Плавное появление и исчезновение</title>
+    <style>
+        .fade-in-out {
+            opacity: 0;
+            transition: opacity 0.5s ease-in-out;
+        }
+    </style>
 </head>
-
 <body>
-<form method="post">
-    <textarea id="mytextarea">Hello, World!</textarea>
-</form>
+
+<button onclick="fadeInOut()">Показать/скрыть</button>
+<div id="myElement">Этот элемент появится и исчезнет</div>
+
+<script>
+    function fadeInOut() {
+        var myElement = document.getElementById("myElement");
+
+        // Добавление класса для начала анимации
+        myElement.classList.add("fade-in-out");
+
+        // Установка таймаута для удаления класса после завершения анимации
+        setTimeout(function() {
+            myElement.classList.remove("fade-in-out");
+        }, 500); // Задержка равна времени анимации в миллисекундах (0.5 секунды)
+    }
+</script>
+
 </body>
 </html>

@@ -1,3 +1,5 @@
+import {DataService} from "../DataService.js";
+
 class GalleryEditor {
     static #countCollums = 3;
     static #buttonHTML = "<a class=\"link-light link-opacity-75-hover\"><svg xmlns=\"http://www.w3.org/2000/svg\" width=\"16\" height=\"16\" fill=\"currentColor\" class=\"bi bi-trash\" viewBox=\"0 0 16 16\">\n" +
@@ -19,6 +21,8 @@ class GalleryEditor {
                 galleryElement.children.item(i).addEventListener("click", () => {
                     galleryElement.removeChild(image)
                     galleryElement.removeChild(button)
+                    this.deleteImage(image, image.getAttribute("data-picture-id")).then(); //?????
+
                 })
             }
         }
@@ -28,7 +32,7 @@ class GalleryEditor {
         for (let i = 1; i <= GalleryEditor.#countCollums; i++) {
             let inputElement = document.getElementById("galleryAddButton" + i);
             let galleryElement = document.getElementById("gallery" + i);
-            galleryElement.addEventListener("change", () => {
+            galleryElement.addEventListener("change", async() => {
                 if (inputElement.files.length > 0) {
                     let file = inputElement.files[0];
 
@@ -40,26 +44,80 @@ class GalleryEditor {
                         let buttonDelete = document.createElement("a");
                         buttonDelete.innerHTML = GalleryEditor.#buttonHTML;
 
+                        await this.sendImage(file, i).then(async () => {
 
                         let reader = new FileReader();
-                        reader.onload = function (e) {
+                        reader.onload =  (e) => {
                             newImage.src = e.target.result;
-
                             galleryElement.insertBefore(buttonDelete, galleryElement.children.item(galleryElement.children.length - 1))
                             galleryElement.insertBefore(newImage, galleryElement.children.item(galleryElement.children.length - 1));
+
                         };
 
-                        buttonDelete.addEventListener("click",() => {
+                        let id = await this.getNewPictureId(i).then();
+
+                            buttonDelete.addEventListener("click",  () => {
                             galleryElement.removeChild(newImage)
                             galleryElement.removeChild(buttonDelete)
+                            console.log(id)
+                             this.deleteImage(file, id).then();
                         })
 
                         reader.readAsDataURL(file);
                         inputElement.value = '';
+                        });
                     }
+
                 }
             })
         }
+    }
+    async sendImage(image, column) {
+        const formData = new FormData();
+        formData.append('file', image);
+        formData.append('id_character', characterId);
+        formData.append('id_column', column);
+
+        await DataService.sendDataRequest(
+            'addPictureToGallery',
+            "POST",
+            204,
+            formData,
+            false,
+            'characters'
+        )
+    }
+
+    async getNewPictureId(id_column) {
+        let picture = await DataService.sendRequest(
+            'getLastPictureGalleryId',
+            "POST",
+            200,
+            {
+                id_column: id_column,
+                id_character: characterId
+            },
+            false,
+            'characters'
+        )
+        console.log(picture)
+        return picture.id;
+    }
+
+
+    async deleteImage(image, imageId) {
+        const formData = new FormData();
+        formData.append('file', image);
+        formData.append('id_image', imageId);
+
+        await DataService.sendDataRequest(
+            'deletePictureGallery',
+            "POST",
+            204,
+            formData,
+            false,
+            'characters'
+        )
     }
 }
 

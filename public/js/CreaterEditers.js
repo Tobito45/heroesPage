@@ -1,13 +1,14 @@
-import {TextEditObj} from "./TextEditObj.js";
-import {TextAreaEditObj} from "./TextAreaEditObj.js";
-import {InputImageObj} from "./InputImageObj.js";
-import {GalleryEditor} from "./GalleryEditor.js";
+import {TextEditObj} from "./textInput/TextEditObj.js";
+import {TextAreaEditObj} from "./textInput/TextAreaEditObj.js";
+import {InputImageObj} from "./imageInput/InputImageObj.js";
+import {GalleryEditor} from "./imageInput/GalleryEditor.js";
 
 class CreaterEditers {
     static #countTextEdit = 15;
     static #countTextAreaEdit = 5;
     static #countImageEdit = 4;
     constructor() {
+
         for(let i = 1; i <= CreaterEditers.#countTextEdit; i++) {
             new TextEditObj(i)
         }

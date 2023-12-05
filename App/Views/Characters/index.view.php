@@ -1,35 +1,29 @@
 <head>
     <link rel="stylesheet" href="/public/css/characterpage.css">
-
+    <link rel="stylesheet" href="/public/css/charactersList.css">
 
     <script src="/public/splide-4.1.3/dist/js/splide.min.js"></script>
     <link rel="stylesheet" href="/public/splide-4.1.3/dist/css/splide.min.css">
 </head>
-<div class="textCharacters">
-    <h1>Characters:</h1>
-    <div class="buttonAddYouHero">
-        <button type="button" class=" btn btn-success">See all heroes -></button>
-    </div>
-</div>
 <div class="characters">
     <div>
-        <img src="/public/img/charactersPage/IronMan.png" alt="Character1">
+        <img src="public/img/charactersPage/IronMan.png" alt="Character1">
         <p>Iron Man</p>
         <p><a class="link-opacity-75 link-opacity-75-hover link-success" href="#">Read more -></a></p>
     </div>
 
     <div>
-        <img src="/public/img/charactersPage/ChainsawMan.png" alt="Character2">
+        <img src="public/img/charactersPage/ChainsawMan.png" alt="Character2">
         <p>Chainsaw Man</p>
-        <p><a class="link-opacity-75 link-opacity-75-hover link-success" href="#">Read more -></a></p>
+        <p><a class="link-opacity-75 link-opacity-75-hover link-success" href="<?= $link->url("characters.characterPage") ?>">Read more -></a></p>
     </div>
     <div>
-        <img src="/public/img/charactersPage/Junkrat.png" alt="Character3">
+        <img src="public/img/charactersPage/Junkrat.png" alt="Character3">
         <p>Junkrat</p>
         <p><a class="link-opacity-75 link-opacity-75-hover link-success" href="#">Read more -></a></p>
     </div>
     <div>
-        <img src="/public/img/charactersPage/Iroh.png" alt="Character4">
+        <img src="public/img/charactersPage/Iroh.png" alt="Character4">
         <p>Uncle Iroh</p>
         <p><a class="link-opacity-75 link-opacity-75-hover link-success" href="#">Read more -></a></p>
     </div>

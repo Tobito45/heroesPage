@@ -54,7 +54,7 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link text-white" href="#">Account
+                    <a class="nav-link text-white" href="<?= \App\Config\Configuration::LOGIN_URL ?>">Account
                         <img alt="Line" src="/public/img/line.png">
                     </a>
                 </li>

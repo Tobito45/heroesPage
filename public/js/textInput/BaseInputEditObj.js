@@ -1,3 +1,5 @@
+import {DataService} from "../DataService.js";
+
 class BaseInputEditObj {
     #saveElementText = null;
     #saveDivElement = null;
@@ -8,10 +10,10 @@ class BaseInputEditObj {
 
     constructor(index) {
         this._index = index;
-        this.reset();
+        this.reset()
     }
 
-    reset() {
+     reset() {
         this.#saveElementText = this._getElementText().innerText;
         this._elementText = this._getElementText();
         this._elementButtonEdit = this._getElementButtonEdit();
@@ -27,18 +29,31 @@ class BaseInputEditObj {
 
     _getElementDiv() {}
 
-    openInputField() {
+     openInputField() {
         this.saveDiv();
         this._elementDiv.innerHTML = this.getInputHTML();
         this.openInputFieldWithText();
-        this.initializeInputEvents();
+         this.initializeInputEvents();
     }
 
     getInputHTML() {}
 
-    initializeInputEvents() {
+     initializeInputEvents() {
         this._elementDiv.getElementsByClassName("confirm")[0].addEventListener("click", () => {
-            this.saveInputField(this._elementDiv.getElementsByClassName("text")[0].value);
+            if (this._elementDiv.getAttribute("data-is-not-null") === "true"
+                && this._elementDiv.getElementsByClassName("text")[0].value === "") {
+                const errorElement = this._elementDiv.querySelector(".error");
+                errorElement.style.color = "red";
+                errorElement.style.display = "inline"
+
+                // Установка таймаута для удаления класса после завершения анимации
+                setTimeout(() => {
+                    errorElement.style.display = "none"
+                }, 2500);
+                return;
+            }
+
+            this.saveInputField(this._elementDiv.getElementsByClassName("text")[0].value).then();
         });
 
         this._elementDiv.getElementsByClassName("cancel")[0].addEventListener("click", () => {
@@ -48,10 +63,27 @@ class BaseInputEditObj {
 
     openInputFieldWithText() {}
 
-    saveInputField(newText) {
+    async saveInputField(newText) {
         this.closeInputField();
+        if (newText !== this._elementText.childNodes[0].nodeValue) {
+            const res = await DataService.sendRequest(
+                'saveCharacterName',
+                "POST",
+                204,
+                {
+                    'id': characterId,
+                    'newName': newText,
+                    'valueParam': this._elementDiv.getAttribute("data-value")
+                },
+                false,
+                'characters'
+            )
+        }
+
         this._elementText.childNodes[0].nodeValue = newText;
     }
+
+
 
     closeInputField() {
         this._elementDiv.innerHTML = this.#saveDivElement;
