@@ -2,6 +2,8 @@
 
 namespace App\Core;
 
+use App\Helpers\RegistrationStatus;
+
 /**
  * Interface IAuthenticator
  * Interface for authentication
@@ -16,6 +18,15 @@ interface IAuthenticator
      * @return bool
      */
     public function login($login, $password): bool;
+
+    /**
+     * Verify, if the user is in DB and has his password is correct
+     * @param $login
+     * @param $email
+     * @return RegistrationStatus
+     * @throws \Exception
+     */
+    public function registration($login, $email): RegistrationStatus;
 
     /**
      * Perform user login

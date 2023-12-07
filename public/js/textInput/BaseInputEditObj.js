@@ -46,10 +46,7 @@ class BaseInputEditObj {
                 errorElement.style.color = "red";
                 errorElement.style.display = "inline"
 
-                // Установка таймаута для удаления класса после завершения анимации
-                setTimeout(() => {
-                    errorElement.style.display = "none"
-                }, 2500);
+                errorElement.style.display = "none"
                 return;
             }
 

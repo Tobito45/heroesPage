@@ -3,6 +3,8 @@
 namespace App\Auth;
 
 use App\Core\IAuthenticator;
+use App\Helpers\RegistrationStatus;
+use App\Models\User;
 
 /**
  * Class DummyAuthenticator
@@ -44,6 +46,28 @@ class DummyAuthenticator implements IAuthenticator
         } else {
             return false;
         }*/
+    }
+
+
+    /**
+     * Verify, if the user is in DB and has his password is correct
+     * @param $login
+     * @param $email
+     * @return RegistrationStatus
+     */
+    public function registration($login, $email) : RegistrationStatus
+    {
+        if ((User::getAll("name = ? AND email = ?", [$login, $email])) != null) {
+            return RegistrationStatus::FAILED_LOGIN_EMAIL;
+        }
+        if (User::getOne($login) != null) {
+            return RegistrationStatus::FAILED_LOGIN;
+        }
+        if (User::getOne($email) != null) {
+            return RegistrationStatus::FAILED_EMAIL;
+        }
+        $_SESSION['user'] = $login;
+        return RegistrationStatus::CORRECT;
     }
 
     /**

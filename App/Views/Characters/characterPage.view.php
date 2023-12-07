@@ -12,7 +12,7 @@
     <script>
         const characterId = <?php echo $data["character"]->getId(); ?>;
     </script>
-    <script type="module" src="/public/js/imageInput/EditButton.js"></script>
+    <script type="module" src="/public/js/EditButton.js"></script>
 </head>
 <div class="textName">
     <div id="edit1" data-value = "name" data-is-not-null = "true">
@@ -189,7 +189,7 @@
     </table>
 </div>
 
-<div class="Capitol">
+<!--<div class="Capitol" id="Capitol1">
     <div class="CapitolHeader" id="edit13">
         <h1 id="text13" >Personality
             <a id="button13" class="link-light link-opacity-75-hover"><svg  xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
@@ -230,8 +230,9 @@
             </p>
         </div>
     </div>
+    <div class="buttonAddParagraph"><button>Add new paragrath</button></div>
 </div>
-<div class="Capitol">
+<div class="Capitol" id="Capitol2">
     <div class="CapitolHeader" id="edit14">
         <h1 id="text14" >Relationships
             <a id="button14" class="link-light link-opacity-75-hover"><svg  xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
@@ -266,8 +267,9 @@
             </p>
         </div>
     </div>
+    <div class="buttonAddParagraph"><button>Add new paragrath</button></div>
 </div>
-<div class="Capitol">
+<div class="Capitol" id="Capitol3">
     <div class="CapitolHeader" id="edit15">
         <h1 id="text15" >Abilities
             <a id="button15" class="link-light link-opacity-75-hover"><svg  xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
@@ -285,8 +287,17 @@
                     </svg></a>
             </p>
         </div>
+        <div class="imageCapitol">
+            <img id="imageShow4" class="rounded-2">
+            <form>
+                <input id="formImage4"  type="file"  accept="image/*">
+            </form>
+        </div>
     </div>
+    <div class="buttonAddParagraph"><button>Add new paragrath</button></div>
 </div>
+<div class="buttonAddCapitol"><button>Add new capitol</button></div>-->
+
 <div class="Gallery">
     <h1>Gallery</h1>
     <!-- Gallery -->
@@ -295,10 +306,13 @@
 
             <?php $picturesColumn = \App\Models\GalleryPictures::getAll("id_character = ? AND id_column = ?", [$data["character"]->getId(), '1']);
                 foreach ($picturesColumn as $picture):  ?>
+
+                    <?php if($auth->isLogged() && $data["character"]->getAuthor() == $auth->getLoggedUserName()): ?>
                 <a class="link-light link-opacity-75-hover"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
                     <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5m2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5m3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0z"/>
                     <path d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4zM2.5 3h11V2h-11z"/>
                 </svg></a>
+                    <?php endif; ?>
                 <img
                             src="<?= \App\Helpers\FileStorage::UPLOAD_DIR . '/' . $picture->getPicture()?>"
                             class="w-100 shadow-1-strong rounded mb-4"
@@ -315,10 +329,13 @@
         <div id="gallery2" class="col-lg-4 mb-4 mb-lg-0">
             <?php $picturesColumn = \App\Models\GalleryPictures::getAll("id_character = ? AND id_column = ?", [$data["character"]->getId(), '2']);
             foreach ($picturesColumn as $picture):  ?>
+
+                <?php if($auth->isLogged() && $data["character"]->getAuthor() == $auth->getLoggedUserName()): ?>
                 <a class="link-light link-opacity-75-hover"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
                         <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5m2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5m3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0z"/>
                         <path d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4zM2.5 3h11V2h-11z"/>
                     </svg></a>
+                <?php endif; ?>
                 <img
                         src="<?= \App\Helpers\FileStorage::UPLOAD_DIR . '/' . $picture->getPicture()?>"
                         class="w-100 shadow-1-strong rounded mb-4"
@@ -335,10 +352,13 @@
         <div id="gallery3" class="col-lg-4 mb-4 mb-lg-0">
             <?php $picturesColumn = \App\Models\GalleryPictures::getAll("id_character = ? AND id_column = ?", [$data["character"]->getId(), '3']);
             foreach ($picturesColumn as $picture):  ?>
+
+            <?php if($auth->isLogged() && $data["character"]->getAuthor() == $auth->getLoggedUserName()): ?>
                 <a class="link-light link-opacity-75-hover"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
                         <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5m2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5m3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0z"/>
                         <path d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4zM2.5 3h11V2h-11z"/>
                     </svg></a>
+                <?php endif; ?>
                 <img
                         src="<?= \App\Helpers\FileStorage::UPLOAD_DIR . '/' . $picture->getPicture()?>"
                         class="w-100 shadow-1-strong rounded mb-4"
@@ -353,6 +373,7 @@
         </div>
     </div>
 </div>
+
 <!-- Gallery -->
 <div class="Gallery">
     <h1>Other Heroes</h1>

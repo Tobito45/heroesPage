@@ -96,6 +96,13 @@ input {
     display: flex;
     flex-direction: row;
 }
+.buttonAddParagraph, .buttonAddCapitol {
+    display: flex;
+    justify-content: end !important;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    padding-left: 5px;
+}
 
 textarea {
     margin-top: 2% !important;
