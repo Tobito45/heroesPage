@@ -3,6 +3,7 @@
 namespace App\Auth;
 
 use App\Core\IAuthenticator;
+use App\Helpers\LoginStatus;
 use App\Helpers\RegistrationStatus;
 use App\Models\User;
 
@@ -15,7 +16,7 @@ class DummyAuthenticator implements IAuthenticator
 {
     public const LOGIN = "admin";
     public const PASSWORD_HASH = '$2y$10$GRA8D27bvZZw8b85CAwRee9NH5nj4CQA6PDFMc90pN9Wi4VAWq3yq'; // admin
-    public const USERNAME = "Admin";
+    public const USERNAME = "Account";
 
     /**
      * DummyAuthenticator constructor
@@ -32,20 +33,29 @@ class DummyAuthenticator implements IAuthenticator
      * @return bool
      * @throws \Exception
      */
-    public function login($login, $password): bool
+    public function login($login, $password): LoginStatus
     {
-        if ($login == $password) {
-            $_SESSION['user'] = $login;
-            return true;
-        } else {
-            return false;
+        $user = User::getAll("name = ?", [$login]);
+        if(empty($user)) {
+            return LoginStatus::FAILED_USER;
         }
-     /*   if ($login == self::LOGIN && password_verify($password, self::PASSWORD_HASH)) {
-            $_SESSION['user'] = self::USERNAME;
-            return true;
-        } else {
-            return false;
-        }*/
+        if(!password_verify($password, $user[0]->getPassword())) { //$password != $user[0]->getPassword()) {
+            return LoginStatus::FAILED_PASSWORD;
+        }
+        $_SESSION['user'] = $login;
+        return LoginStatus::CORRECT;
+        /*  if ($login == $password) {
+             $_SESSION['user'] = $login;
+             return true;
+         } else {
+             return false;
+         }
+        if ($login == self::LOGIN && password_verify($password, self::PASSWORD_HASH)) {
+             $_SESSION['user'] = self::USERNAME;
+             return true;
+         } else {
+             return false;
+         }*/
     }
 
 
@@ -60,10 +70,10 @@ class DummyAuthenticator implements IAuthenticator
         if ((User::getAll("name = ? AND email = ?", [$login, $email])) != null) {
             return RegistrationStatus::FAILED_LOGIN_EMAIL;
         }
-        if (User::getOne($login) != null) {
+        if (User::getAll("name = ?", [$login]) != null) {
             return RegistrationStatus::FAILED_LOGIN;
         }
-        if (User::getOne($email) != null) {
+        if (User::getAll("email = ?", [$email]) != null) {
             return RegistrationStatus::FAILED_EMAIL;
         }
         $_SESSION['user'] = $login;

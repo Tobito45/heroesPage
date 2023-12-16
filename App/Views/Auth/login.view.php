@@ -18,10 +18,9 @@
                 <div class="card-body rounded-1">
                     <h6 class="text-center">Hello there,</h6>
                     <h1 class="text-center">Welcome back</h1>
-                    <div class="text-center text-danger mb-3">
-                        <?= @$data['message'] ?>
+                    <div class="text-center text-danger mb-3" id="errorTextLogin" data-action="<?= $link->url("account.index") ?>">
+
                     </div>
-                    <form class="form-signin" method="post" action="<?= $link->url("login") ?>">
                         <div class="form-label-group mb-3">
                             <input name="login" type="text" id="loginLog" class="form-control" placeholder="Login"
                                    required autofocus>
@@ -32,23 +31,20 @@
                                    placeholder="Password" required>
                         </div>
                         <div class="text-center">
-                            <button class="btn btn-success" type="submit" name="submit">Login
+                            <button id="loginSubmit"  class="btn btn-success" type="submit" name="submit">Login
                             </button>
                         </div>
                         <div class="text-center mt-3">
                             <a class="link-opacity-75-hover" style="cursor: pointer"  id="buttonRegister">not registered yet?</a>
                         </div>
-                    </form>
                 </div>
             </div>
 
             <div class="card card-signin" id="registration" style="display: none">
                 <div class="card-body rounded-1">
                     <h1 class="text-center">Registration</h1>
-                    <div class="text-center text-danger mb-3">
-                        <?= @$data['message'] ?>
+                    <div class="text-center text-danger mb-3" id="errorTextRegistration" data-action="<?= $link->url("account.index") ?>">
                     </div>
-                    <form class="form-signin"> <!-- method="post" action="<?= $link->url("login") ?>"-->
                         <div class="form-label-group mb-3">
                             <input name="login" type="text" id="loginReg" class="form-control" placeholder="Login"
                                    required autofocus>
@@ -71,7 +67,6 @@
                         <div class="text-center mt-3">
                             <a class="link-opacity-75-hover" style="cursor: pointer" id="buttonLogin">back to login</a>
                         </div>
-                    </form>
                 </div>
             </div>
 

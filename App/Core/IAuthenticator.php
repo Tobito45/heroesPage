@@ -2,6 +2,7 @@
 
 namespace App\Core;
 
+use App\Helpers\LoginStatus;
 use App\Helpers\RegistrationStatus;
 
 /**
@@ -17,7 +18,7 @@ interface IAuthenticator
      * @param $password
      * @return bool
      */
-    public function login($login, $password): bool;
+    public function login($login, $password): LoginStatus;
 
     /**
      * Verify, if the user is in DB and has his password is correct

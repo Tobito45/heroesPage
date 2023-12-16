@@ -15,10 +15,14 @@ class AuthorizationAPI {
             this.showRegistrationPanel();
         })
 
-            document.getElementById("registrationSubmit").addEventListener("click", async () => {
-                await this.regestration(document.getElementById("loginReg").value, document.getElementById("emailReg").value,
-                    document.getElementById("passwordReg").value).then()
-            })
+        document.getElementById("registrationSubmit").addEventListener("click", async () => {
+            await this.regestration(document.getElementById("loginReg").value, document.getElementById("emailReg").value,
+                document.getElementById("passwordReg").value).then()
+        })
+
+        document.getElementById("loginSubmit").addEventListener("click", async () => {
+            await this.login(document.getElementById("loginLog").value, document.getElementById("passwordLog").value).then()
+        })
         this.showLoginPanel();
 
     }
@@ -45,11 +49,35 @@ class AuthorizationAPI {
                 'email': email,
                 'password': password
             },
-            [],
+            ["watafac"],
             'auth'
         )
+        console.log(result);
+        if(result === "CORRECT") {
+            window.location.href = document.getElementById("errorTextRegistration").getAttribute("data-action");
+        } else {
+            document.getElementById("errorTextRegistration").innerText = result;
+        }
+    }
 
-        console.log(result)
+    async login(login, password) {
+        const result = await DataService.sendRequest(
+            'signIn',
+            "POST",
+            200,
+            {
+                'login': login,
+                'password': password
+            },
+            ["watafac"],
+            'auth'
+        )
+        console.log(result);
+        if(result === "CORRECT") {
+            window.location.href = document.getElementById("errorTextLogin").getAttribute("data-action");
+        } else {
+            document.getElementById("errorTextLogin").innerText = result;
+        }
     }
 }
 

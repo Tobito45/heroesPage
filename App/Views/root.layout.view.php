@@ -54,7 +54,9 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link text-white" href="<?= \App\Config\Configuration::LOGIN_URL ?>">Account
+                    <a class="nav-link text-white <?=(strpos($_SERVER['REQUEST_URI'],"login")) ? "selectedNavItem" : "" ?>
+                                                    <?=(strpos($_SERVER['REQUEST_URI'],"account")) ? "selectedNavItem" : "" ?>" href="<?= $link->url("auth.index") ?>" >
+                        <?= $auth->isLogged() ? $auth->getLoggedUserName() : "Account" ?>
                         <img alt="Line" src="/public/img/line.png">
                     </a>
                 </li>

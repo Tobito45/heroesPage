@@ -7,6 +7,7 @@ use App\Core\AControllerBase;
 use App\Core\Responses\EmptyResponse;
 use App\Core\Responses\Response;
 use App\Core\Responses\ViewResponse;
+use App\Helpers\LoginStatus;
 use App\Helpers\RegistrationStatus;
 use App\Models\User;
 
@@ -32,17 +33,24 @@ class AuthController extends AControllerBase
      */
     public function login(): Response
     {
-       $formData = $this->app->getRequest()->getPost();
-        $logged = null;
-        if (isset($formData['submit'])) {
-            $logged = $this->app->getAuth()->login($formData['login'], $formData['password']);
-            if ($logged) {
-                return $this->redirect($this->url("admin.index"));
-            }
-        }
+        return $this->html();
+    }
+    public function signIn() {
+        $jsonData = $this->app->getRequest()->getRawBodyJSON();
 
-        $data = ($logged === false ? ['message' => 'Zlý login alebo heslo! Sho'] : []);
-        return $this->html($data);
+        if (
+            is_object($jsonData)
+            && property_exists($jsonData, 'login')
+            && property_exists($jsonData, 'password')
+            && !empty($jsonData->login) && !empty($jsonData->password)) {
+
+            $logged = $this->app->getAuth()->login($jsonData->login, $jsonData->password);
+
+            return $this->json($logged->value);
+        } else {
+            throw new HTTPException(400, 'The user regestration failed, please, reload the page and try again');
+
+        }
     }
 
     public function registration(): Response
@@ -60,17 +68,16 @@ class AuthController extends AControllerBase
                 $newUser = new User();
                 $newUser->setName($jsonData->login);
                 $newUser->setEmail($jsonData->email);
+                $newUser->setRole("user");
 
                 $options = ['cost' => 12];
                 $hashedPassword = password_hash($jsonData->password, PASSWORD_BCRYPT, $options);
                 $newUser->setPassword($hashedPassword);
 
                 $newUser->save();
-                return $this->redirect($this->url("admin.index"));
-            } else {
-                return $this->json($registr->value);
-            }
 
+            }
+            return $this->json($registr->value);
         } else {
             throw new HTTPException(400, 'The user regestration failed, please, reload the page and try again');
         }

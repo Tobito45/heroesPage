@@ -1,13 +1,15 @@
 <?php
 
 /** @var \App\Core\IAuthenticator $auth */ ?>
+<head>
+    <link rel="stylesheet" href="/public/css/adminpage.css">
+</head>
 
 <div class="container-fluid">
     <div class="row">
         <div class="col">
             <div>
-                Vitaj, <strong><?= $auth->getLoggedUserName() ?></strong>!<br><br>
-                Táto časť aplikácie je prístupná len po prihlásení.
+                <h1 class="textOfMainPage">My heroes:</h1>
             </div>
         </div>
     </div>
