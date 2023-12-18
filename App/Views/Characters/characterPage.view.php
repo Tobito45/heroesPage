@@ -4,6 +4,10 @@
 /** @var \App\Models\Post $character */
 /** @var App\Core\IAuthenticator $auth */
 /** @var \App\Core\LinkGenerator $link */
+
+use App\Models\Character;
+
+   // $character = Character::getOne($data["character"]);
 ?>
 <head>
     <link rel="stylesheet" href="/public/css/characterinfo.css">
@@ -39,7 +43,14 @@
 </div>
 <div class="heroImageAndInfo">
     <div class="heroImage">
-        <img id="imageShow1" src="<?= \App\Helpers\FileStorage::UPLOAD_DIR . '/' . $data["character"]->getPicture()?>" class="img-fluid alt="Character2">
+        <img id="imageShow1" src="<?php
+                  if(str_contains($data["character"]->getPicture(), "/")) {
+                      echo  $data["character"]->getPicture();
+                  }else {
+                      echo   \App\Helpers\FileStorage::UPLOAD_DIR . '/' . $data["character"]->getPicture();
+                 }
+        ?>"
+             class="img-fluid alt="Character2">
         <?php if($auth->isLogged() && $data["character"]->getAuthor() == $auth->getLoggedUserName()): ?>
             <form  enctype="multipart/form-data">
                 <input  id="formImage1" type="file" name='picture'   accept="image/*">

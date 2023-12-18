@@ -7,6 +7,7 @@ use App\Core\AControllerBase;
 use App\Core\Responses\EmptyResponse;
 use App\Core\Responses\Response;
 use App\Core\Responses\ViewResponse;
+use App\Core\Responses\RedirectResponse;
 use App\Helpers\LoginStatus;
 use App\Helpers\RegistrationStatus;
 use App\Models\User;
@@ -88,9 +89,9 @@ class AuthController extends AControllerBase
      * Logout a user
      * @return ViewResponse
      */
-    public function logout(): Response
+    public function logout()
     {
         $this->app->getAuth()->logout();
-        return $this->html();
+        return new RedirectResponse($this->url("auth.login"));
     }
 }

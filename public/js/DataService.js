@@ -73,6 +73,7 @@ class DataService {
                 body: body
             })
 
+            return await response.json();
         } catch (ex) {
             return onErrorReturn;
         }

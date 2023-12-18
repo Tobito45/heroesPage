@@ -24,7 +24,8 @@ class CharactersController extends AControllerBase
 
     public function characterPage() : Response
     {
-        return  $this->html(["character" => Character::getOne(1)]);
+        $id = $this->request()->getValue("character");
+        return $this->html(["character" => Character::getOne($id)]);
     }
 
     public function saveCharacterName() : Response

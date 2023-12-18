@@ -1,3 +1,10 @@
+<?php
+/** @var \App\Core\LinkGenerator $link */
+
+use App\Models\Character;
+
+?>
+
 <head>
     <link rel="stylesheet" href="/public/css/characterpage.css">
     <link rel="stylesheet" href="/public/css/charactersList.css">
@@ -15,7 +22,7 @@
     <div>
         <img src="public/img/charactersPage/ChainsawMan.png" alt="Character2">
         <p>Chainsaw Man</p>
-        <p><a class="link-opacity-75 link-opacity-75-hover link-success" href="<?= $link->url("characters.characterPage") ?>">Read more -></a></p>
+        <p><a class="link-opacity-75 link-opacity-75-hover link-success" href="<?= $link->url("characters.characterPage", ["character" => 1]) ?>">Read more -></a></p>
     </div>
     <div>
         <img src="public/img/charactersPage/Junkrat.png" alt="Character3">

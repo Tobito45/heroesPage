@@ -1,8 +1,8 @@
-import {TextEditObj} from "./textInput/TextEditObj.js";
-import {TextAreaEditObj} from "./textInput/TextAreaEditObj.js";
-import {InputImageObj} from "./imageInput/InputImageObj.js";
-import {GalleryEditor} from "./imageInput/GalleryEditor.js";
-import {ParagraphAdd} from "./paragraphAndCapitol/ParagraphAdd.js";
+import {TextEditObj} from "./TextEditObj.js";
+import {TextAreaEditObj} from "./TextAreaEditObj.js";
+import {InputImageObj} from "../imageInput/InputImageObj.js";
+import {GalleryEditor} from "../imageInput/GalleryEditor.js";
+import {ParagraphAdd} from "../paragraphAndCapitol/ParagraphAdd.js";
 
 
 class CreaterEditers {

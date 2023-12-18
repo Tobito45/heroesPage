@@ -1,0 +1,50 @@
+body{
+    background-color: #1e2027 !important;
+}
+
+h1 {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 200%;
+    font-weight: bold;
+    color: #70D907;
+}
+.askPanel {
+    position: fixed;
+    background-color: rgb(68, 68, 68, 0.7);
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+}
+.askPanel .parentLoginPanel {
+    position: fixed;
+    width: 35%;
+    height: 25%;
+    top: 40%;
+    left: 33%;
+}
+.askPanel h1 {
+    margin-bottom: 15px !important;
+}
+.buttonsName {
+    display: flex;
+    justify-content: space-around;
+}
+.loginInfo {
+    display: flex;
+    justify-content: space-between;
+}
+.buttonLogOut a {
+    text-decoration: none;
+    color: white;
+}
+
+
+@media (max-width: 768px) {
+    .askPanel .parentLoginPanel{
+        width: 70%;
+        height: 10%;
+        top: 40%;
+        left: 16%;
+    }
+}

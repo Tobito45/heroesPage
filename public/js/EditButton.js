@@ -1,4 +1,4 @@
-import {CreaterEditers} from "./CreaterEditers.js";
+import {CreaterEditers} from "./textInput/CreaterEditers.js";
 
 window.onload = () => {
     new CreaterEditers();

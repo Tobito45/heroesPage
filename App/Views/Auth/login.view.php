@@ -5,6 +5,7 @@
 ?>
 <head>
     <link rel="stylesheet" href="/public/css/login.css">
+    <link rel="stylesheet" href="/public/css/form.css">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>

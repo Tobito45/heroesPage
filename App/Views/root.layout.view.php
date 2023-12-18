@@ -55,8 +55,9 @@
                 </li>
                 <li class="nav-item">
                     <a class="nav-link text-white <?=(strpos($_SERVER['REQUEST_URI'],"login")) ? "selectedNavItem" : "" ?>
-                                                    <?=(strpos($_SERVER['REQUEST_URI'],"account")) ? "selectedNavItem" : "" ?>" href="<?= $link->url("auth.index") ?>" >
-                        <?= $auth->isLogged() ? $auth->getLoggedUserName() : "Account" ?>
+                                                    <?=(strpos($_SERVER['REQUEST_URI'],"account")) ? "selectedNavItem" : "" ?>"
+                       href="<?= $auth->isLogged() ? $link->url("account.index") : $link->url("auth.index") ?>" >
+                        <?= $auth->isLogged() ? "Account" : "Sign in " ?>
                         <img alt="Line" src="/public/img/line.png">
                     </a>
                 </li>
