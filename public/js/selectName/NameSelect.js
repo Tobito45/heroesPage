@@ -26,12 +26,18 @@ class NameSelect {
             })
         }
 
+        let buttonsTrash = document.getElementsByClassName("delete")
+        for (let i = 0; i < buttonsTrash.length; i++) {
+            buttonsTrash[i].addEventListener("click", () => {
+                this.deleteHeroPage(buttonsTrash[i].getAttribute("data-delete"))
+            })
+        }
+
         this.#panel.style.display = "none";
 
     }
 
     async createHeroPage(name, image) {
-
         const res = await DataService.sendRequest(
             'createNewHero',
             "POST",
@@ -49,6 +55,20 @@ class NameSelect {
         } else {
             window.location.href = document.getElementById("addCharacter").getAttribute("data-action") + "&character=" + res;
         }
+    }
+
+    async deleteHeroPage(id) {
+        await DataService.sendRequest(
+            'deleteHero',
+            "POST",
+            200,
+            {
+                'id':id
+            },
+            false,
+            'account'
+        )
+        //window.location.href = document.getElementById("changeCharacter").getAttribute("data-action");
     }
 }
 

@@ -61,6 +61,15 @@
                         <img alt="Line" src="/public/img/line.png">
                     </a>
                 </li>
+                <?php if($auth->isLogged()): ?>
+                <li class="nav-item">
+                    <a class="nav-link text-white"
+                       href="<?=$link->url("auth.logout")?>" >
+                        Log out
+                        <img alt="Line" src="/public/img/line.png">
+                    </a>
+                </li>
+                <?php endif; ?>
             </ul>
         </div>
     </div>

@@ -36,8 +36,8 @@ class AccountController extends AControllerBase
     public function createNewHero() : Response
     {
         $jsonData = $this->app->getRequest()->getRawBodyJSON();
-
         if(is_object($jsonData)
+
             && property_exists($jsonData, 'name') &&  property_exists($jsonData, 'image')
             && !empty($jsonData->name) && !empty($jsonData->image)) {
 
@@ -55,5 +55,23 @@ class AccountController extends AControllerBase
         } else {
             throw new HTTPException(400, 'The user regestration failed, please, reload the page and try again');
         }
+    }
+
+    public function deleteHero() : Response
+    {
+        $jsonData = $this->app->getRequest()->getRawBodyJSON();
+        if(is_object($jsonData)
+            && property_exists($jsonData, 'id') && !empty($jsonData->id)) {
+
+            $character = Character::getOne($jsonData->id);
+            if($character->getAuthor() != $this->app->getAuth()->getLoggedUserName() && $character->getAuthor() != "admin") {
+                throw new HTTPException(400, 'Error delete character');
+            }
+            $character->delete();
+
+        } else {
+            throw new HTTPException(400, 'Error delete character');
+        }
+        return $this->json(false);
     }
 }

@@ -12,9 +12,12 @@ class CreaterEditers {
     constructor() {
 
         for(let i = 1; i <= CreaterEditers.#countTextEdit; i++) {
+            if(i === 2)
+                continue;
             new TextEditObj(i)
         }
 
+        new TextAreaEditObj(1);
      //   for(let i = 1; i <= CreaterEditers.#countTextAreaEdit; i++) {
       //      new TextAreaEditObj(i)
        // }

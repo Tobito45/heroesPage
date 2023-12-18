@@ -15,24 +15,24 @@ use App\Models\Character;
 <div class="characters">
     <div>
         <img src="public/img/charactersPage/IronMan.png" alt="Character1">
-        <p>Iron Man</p>
-        <p><a class="link-opacity-75 link-opacity-75-hover link-success" href="#">Read more -></a></p>
+        <p><?= Character::getOne(1)->getName() ?></p>
+        <p><a class="link-opacity-75 link-opacity-75-hover link-success" href="<?= $link->url("characters.characterPage", ["character" => 1]) ?>">Read more -></a></p>
     </div>
 
     <div>
         <img src="public/img/charactersPage/ChainsawMan.png" alt="Character2">
-        <p>Chainsaw Man</p>
-        <p><a class="link-opacity-75 link-opacity-75-hover link-success" href="<?= $link->url("characters.characterPage", ["character" => 1]) ?>">Read more -></a></p>
+        <p><?= Character::getOne(2)->getName() ?></p>
+        <p><a class="link-opacity-75 link-opacity-75-hover link-success" href="<?= $link->url("characters.characterPage", ["character" => 2]) ?>">Read more -></a></p>
     </div>
     <div>
         <img src="public/img/charactersPage/Junkrat.png" alt="Character3">
-        <p>Junkrat</p>
-        <p><a class="link-opacity-75 link-opacity-75-hover link-success" href="#">Read more -></a></p>
+        <p><?= Character::getOne(3)->getName() ?></p>
+        <p><a class="link-opacity-75 link-opacity-75-hover link-success" href="<?= $link->url("characters.characterPage", ["character" => 3]) ?>">Read more -></a></p>
     </div>
     <div>
         <img src="public/img/charactersPage/Iroh.png" alt="Character4">
-        <p>Uncle Iroh</p>
-        <p><a class="link-opacity-75 link-opacity-75-hover link-success" href="#">Read more -></a></p>
+        <p><?= Character::getOne(4)->getName() ?></p>
+        <p><a class="link-opacity-75 link-opacity-75-hover link-success" href="<?= $link->url("characters.characterPage", ["character" => 4]) ?>">Read more -></a></p>
     </div>
 
 </div>

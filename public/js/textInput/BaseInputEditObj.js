@@ -46,7 +46,7 @@ class BaseInputEditObj {
                 errorElement.style.color = "red";
                 errorElement.style.display = "inline"
 
-                errorElement.style.display = "none"
+                errorElement.style.display = "inline"
                 return;
             }
 

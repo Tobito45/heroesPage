@@ -16,13 +16,20 @@ input {
     align-items: center;
 }
 
+
 .textName h1, .textName div:first-child input{
     color: #70D907;
     font-weight: bold;
 }
 .textName p {
+    text-align: center;
     color: white;
 }
+.textName p::before {
+}
+.textName p::after {
+}
+
 .textName p::before, .textName p::after {
     content: "“";
     color: #70D907;
