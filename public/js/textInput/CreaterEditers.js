@@ -10,7 +10,6 @@ class CreaterEditers {
     static #countTextAreaEdit = 5;
     static #countImageEdit = 1//4;
     constructor() {
-
         for(let i = 1; i <= CreaterEditers.#countTextEdit; i++) {
             if(i === 2)
                 continue;

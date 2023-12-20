@@ -16,8 +16,13 @@ input {
     align-items: center;
 }
 
-
-.textName h1, .textName div:first-child input{
+.textName h5 {
+    text-align: center;
+}
+.textName h5 svg {
+    margin: 5px 5px 10px;
+}
+.textName h1, .textName h5, .textName div:first-child input{
     color: #70D907;
     font-weight: bold;
 }
@@ -75,11 +80,11 @@ input {
     margin-left: 40px;
 }
 
-.Capitol, .Gallery {
+.Capitol, .Gallery, .Reviews {
     margin: 5% 2% 3%;
 }
 
-.Capitol .CapitolHeader, .Gallery h1 {
+.Capitol .CapitolHeader, .Reviews h1, .Gallery h1 {
     color: white;
     padding-bottom: 10px;
     border-bottom: 1px solid;
@@ -114,6 +119,63 @@ input {
 textarea {
     margin-top: 2% !important;
     resize: none !important;
+}
+.Reviews h3, .Reviews p {
+    margin-right: 5px;
+    margin-left: 5px;
+}
+.Reviews p {
+    padding: 10px;
+}
+
+.Reviews {
+    display: flex;
+    flex-direction: column;
+}
+.Reviews>div{
+    background-color: #1e2027;
+    margin-bottom: 10px;
+}
+
+.areaReview {
+    width: 100%
+}
+
+.grade {
+    padding-right: 0;
+    padding-left: 5px;
+    margin-right: 5px;
+}
+
+.gradeDiv {
+    display: flex;
+}
+.gradeDiv a {
+    margin-top: 5px;
+}
+
+
+.autorReview {
+    display: flex;
+    color: #70D907;
+    justify-content: space-between;
+}
+.reviewButtons {
+    display: flex;
+    justify-content: space-between;
+}
+.reviewButtons h5 {
+    display: none;
+    color: white;
+
+}
+
+.textReview {
+    color: white;
+    font-size: 18px;
+    background-color: #1e2027;
+    border: 1px solid #ccc;
+    border-radius: 2px;
 }
 
 @media (max-width: 768px) {

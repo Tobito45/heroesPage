@@ -14,29 +14,71 @@ use App\Models\Character;
 </head>
 <div class="characters">
     <div>
-        <img src="public/img/charactersPage/IronMan.png" alt="Character1">
+        <img src="<?= \App\Helpers\FileStorage::UPLOAD_DIR . '/' . Character::getOne(1)->getPicture()?>" alt="Character1">
         <p><?= Character::getOne(1)->getName() ?></p>
         <p><a class="link-opacity-75 link-opacity-75-hover link-success" href="<?= $link->url("characters.characterPage", ["character" => 1]) ?>">Read more -></a></p>
     </div>
 
     <div>
-        <img src="public/img/charactersPage/ChainsawMan.png" alt="Character2">
+        <img src="<?= \App\Helpers\FileStorage::UPLOAD_DIR . '/' . Character::getOne(2)->getPicture()?>" alt="Character2">
         <p><?= Character::getOne(2)->getName() ?></p>
         <p><a class="link-opacity-75 link-opacity-75-hover link-success" href="<?= $link->url("characters.characterPage", ["character" => 2]) ?>">Read more -></a></p>
     </div>
     <div>
-        <img src="public/img/charactersPage/Junkrat.png" alt="Character3">
+        <img src="<?= \App\Helpers\FileStorage::UPLOAD_DIR . '/' . Character::getOne(3)->getPicture()?>" alt="Character3">
         <p><?= Character::getOne(3)->getName() ?></p>
         <p><a class="link-opacity-75 link-opacity-75-hover link-success" href="<?= $link->url("characters.characterPage", ["character" => 3]) ?>">Read more -></a></p>
     </div>
     <div>
-        <img src="public/img/charactersPage/Iroh.png" alt="Character4">
+        <img src="<?= \App\Helpers\FileStorage::UPLOAD_DIR . '/' . Character::getOne(4)->getPicture()?>" alt="Character4">
         <p><?= Character::getOne(4)->getName() ?></p>
         <p><a class="link-opacity-75 link-opacity-75-hover link-success" href="<?= $link->url("characters.characterPage", ["character" => 4]) ?>">Read more -></a></p>
     </div>
 
 </div>
 
+<?php
+    $popularCharacters = Character::getAll();
+    $gradeValues = [];
+    $newPopularCharacters = [];
+    foreach ($popularCharacters as $character) {
+        if(count(\App\Models\GalleryPictures::getAll("id_character = ?", [$character->getId()])) == 0)
+            continue;
+
+        $grade = 0;
+        $allReviews = \App\Models\Review::getAll("id_character = ?", [$character->getId()]);
+        foreach ($allReviews as $review) {
+            $grade += $review->getGrade();
+        }
+        if(count($allReviews) != 0)
+            $grade = $grade/count($allReviews);
+        $gradeValues[] = $grade;
+    }
+
+    rsort($gradeValues);
+
+    $topThree = array_slice($gradeValues, 0, 3);
+
+    foreach ($popularCharacters as $character) {
+        if(count(\App\Models\GalleryPictures::getAll("id_character = ?", [$character->getId()])) == 0)
+            continue;
+
+        $grade = 0;
+        $allReviews = \App\Models\Review::getAll("id_character = ?", [$character->getId()]);
+        foreach ($allReviews as $review) {
+            $grade += $review->getGrade();
+        }
+        if(count($allReviews) != 0)
+            $grade = $grade/count($allReviews);
+
+        if (in_array($grade, $topThree)) {
+            $key = array_search($grade, $topThree);
+            unset($topThree[$key]);
+            $newPopularCharacters[] = $character;
+        }
+    }
+
+?>
 <div class="textCharacters charactersSliders">
     <h1 >Popular characters</h1>
     <h1 class="disableOnMobil">New characters</h1>
@@ -46,41 +88,74 @@ use App\Models\Character;
         <div class="splide__track">
             <ul class="splide__list">
                 <li class="splide__slide">
-                    <img class="rounded-2" src="/public/img/charactersPictures/Illidan.jpeg" alt="test1">
+                    <img class="rounded-2" src="<?php
+                        $getImages = \App\Models\GalleryPictures::getAll("id_character = ?", [$newPopularCharacters[0]->getId()]);
+                        $randomKey = array_rand($getImages);
+                        echo \App\Helpers\FileStorage::UPLOAD_DIR . '/' . $getImages[$randomKey]->getPicture();
+                    ?>" alt="test1">
                     <div class="slider__item__div">
                         <div class="buttonAddYouHero">
-                            <button type="button" class=" btn btn-success">Illidan Stormrage</button>
+                            <button type="button" class=" btn btn-success"
+                                    onclick="window.location.href='<?= $link->url("characters.characterPage", ["character" => $newPopularCharacters[0]->getId()]) ?>'">
+                                <?= $newPopularCharacters[0]->getName() ?></button>
                         </div>
                         <div class="buttonAddYouHero">
-                            <button type="button" class=" btn btn-success">Read more -></button>
+                            <button type="button" class=" btn btn-success" onclick="window.location.href='<?= $link->url("characters.characterPage", ["character" => $newPopularCharacters[0]->getId()]) ?>'">
+                                    Read more -></button>
                         </div>
                     </div>
                 </li>
                 <li class="splide__slide">
-                    <img class="rounded-2" src="/public/img/charactersPictures/levi.jpg" alt="test2">
+                    <img class="rounded-2" src="<?php
+                        $getImages = \App\Models\GalleryPictures::getAll("id_character = ?", [$newPopularCharacters[1]->getId()]);
+                        $randomKey = array_rand($getImages);
+                        echo \App\Helpers\FileStorage::UPLOAD_DIR . '/' . $getImages[$randomKey]->getPicture();
+                    ?>" alt="test2">
                     <div class="slider__item__div">
                         <div class="buttonAddYouHero">
-                            <button type="button" class=" btn btn-success">Levi Ackerman</button>
+                            <button type="button" class=" btn btn-success"
+                                    onclick="window.location.href='<?= $link->url("characters.characterPage", ["character" => $newPopularCharacters[1]->getId()]) ?>'">
+                                <?= $newPopularCharacters[1]->getName() ?></button>
                         </div>
                         <div class="buttonAddYouHero">
-                            <button type="button" class=" btn btn-success">Read more -></button>
+                            <button type="button" class=" btn btn-success" onclick="window.location.href='<?= $link->url("characters.characterPage", ["character" => $newPopularCharacters[1]->getId()]) ?>'">
+                                Read more -></button>
                         </div>
                     </div>
                 </li>
                 <li class="splide__slide">
-                    <img class="rounded-2" src="/public/img/charactersPictures/creeper.png" alt="test3">
+                    <img class="rounded-2" src="<?php
+                        $getImages = \App\Models\GalleryPictures::getAll("id_character = ?", [$newPopularCharacters[2]->getId()]);
+                        $randomKey = array_rand($getImages);
+                        echo \App\Helpers\FileStorage::UPLOAD_DIR . '/' . $getImages[$randomKey]->getPicture();
+                    ?>" alt="test3">
                     <div class="slider__item__div">
                         <div class="buttonAddYouHero">
-                            <button type="button" class=" btn btn-success">Creeper</button>
+                            <button type="button" class=" btn btn-success"
+                                    onclick="window.location.href='<?= $link->url("characters.characterPage", ["character" => $newPopularCharacters[2]->getId()]) ?>'">
+                                <?= $newPopularCharacters[2]->getName() ?></button>
                         </div>
                         <div class="buttonAddYouHero">
-                            <button type="button" class="btn btn-success">Read more -></button>
+                            <button type="button" class=" btn btn-success" onclick="window.location.href='<?= $link->url("characters.characterPage", ["character" => $newPopularCharacters[2]->getId()]) ?>'">
+                                Read more -></button>
                         </div>
                     </div>
                 </li>
             </ul>
         </div>
     </section>
+<?php
+    $charactersWithMaxId = Character::getAll(null,[],"id DESC");
+    $newCharacters = [];
+    foreach ($charactersWithMaxId as $character) {
+        if(count(\App\Models\GalleryPictures::getAll("id_character = ?", [$character->getId()])) > 0) {
+            $newCharacters[] = $character;
+        }
+
+        if(count($newCharacters) >= 3)
+            break;
+    }
+?>
     <div class="textCharacters charactersSliders enableOnMobile">
         <h1>New characters</h1>
     </div>
@@ -88,35 +163,56 @@ use App\Models\Character;
         <div class="splide__track">
             <ul class="splide__list">
                 <li class="splide__slide">
-                    <img class="rounded-2" src="/public/img/charactersPictures/spiderMan.jpg" alt="test1">
+                    <img class="rounded-2" src="<?php
+                        $getImages = \App\Models\GalleryPictures::getAll("id_character = ?", [$newCharacters[0]->getId()]);
+                        $randomKey = array_rand($getImages);
+                        echo \App\Helpers\FileStorage::UPLOAD_DIR . '/' . $getImages[$randomKey]->getPicture();
+                    ?>" alt="test3">
                     <div class="slider__item__div">
                         <div class="buttonAddYouHero">
-                            <button type="button" class=" btn btn-success">Spider Man</button>
+                            <button type="button" class=" btn btn-success"
+                                    onclick="window.location.href='<?= $link->url("characters.characterPage", ["character" => $newCharacters[0]->getId()]) ?>'">
+                                <?= $newCharacters[0]->getName() ?></button>
                         </div>
                         <div class="buttonAddYouHero">
-                            <button type="button" class=" btn btn-success">Read more -></button>
+                            <button type="button" class=" btn btn-success" onclick="window.location.href='<?= $link->url("characters.characterPage", ["character" => $newCharacters[0]->getId()]) ?>'">
+                                Read more -></button>
                         </div>
                     </div>
                 </li>
                 <li class="splide__slide">
-                    <img class="rounded-2" src="/public/img/charactersPictures/deidara.png" alt="test2">
+                    <img class="rounded-2" src="<?php
+                        $getImages = \App\Models\GalleryPictures::getAll("id_character = ?", [$newCharacters[1]->getId()]);
+                        $randomKey = array_rand($getImages);
+                        echo \App\Helpers\FileStorage::UPLOAD_DIR . '/' . $getImages[$randomKey]->getPicture();
+                    ?>" alt="test3">
                     <div class="slider__item__div">
                         <div class="buttonAddYouHero">
-                            <button type="button" class=" btn btn-success">Deidara</button>
+                            <button type="button" class=" btn btn-success"
+                                    onclick="window.location.href='<?= $link->url("characters.characterPage", ["character" => $newCharacters[1]->getId()]) ?>'">
+                                <?= $newCharacters[1]->getName() ?></button>
                         </div>
                         <div class="buttonAddYouHero">
-                            <button type="button" class=" btn btn-success">Read more -></button>
+                            <button type="button" class=" btn btn-success" onclick="window.location.href='<?= $link->url("characters.characterPage", ["character" => $newCharacters[1]->getId()]) ?>'">
+                                Read more -></button>
                         </div>
                     </div>
                 </li>
                 <li class="splide__slide">
-                    <img class="rounded-2" src="/public/img/charactersPictures/gojo.jpg" alt="test3">
+                    <img class="rounded-2" src="<?php
+                        $getImages = \App\Models\GalleryPictures::getAll("id_character = ?", [$newCharacters[2]->getId()]);
+                        $randomKey = array_rand($getImages);
+                        echo \App\Helpers\FileStorage::UPLOAD_DIR . '/' . $getImages[$randomKey]->getPicture();
+                        ?>" alt="test3">
                     <div class="slider__item__div">
                         <div class="buttonAddYouHero">
-                            <button type="button" class=" btn btn-success">Gojo Satoru</button>
+                            <button type="button" class=" btn btn-success"
+                                    onclick="window.location.href='<?= $link->url("characters.characterPage", ["character" => $newCharacters[2]->getId()]) ?>'">
+                                <?= $newCharacters[2]->getName() ?></button>
                         </div>
                         <div class="buttonAddYouHero">
-                            <button type="button" class="btn btn-success">Read more -></button>
+                            <button type="button" class=" btn btn-success" onclick="window.location.href='<?= $link->url("characters.characterPage", ["character" => $newCharacters[2]->getId()]) ?>'">
+                                Read more -></button>
                         </div>
                     </div>
                 </li>

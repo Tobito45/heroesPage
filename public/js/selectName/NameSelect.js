@@ -58,17 +58,18 @@ class NameSelect {
     }
 
     async deleteHeroPage(id) {
-        await DataService.sendRequest(
+        const res =  await DataService.sendRequest(
             'deleteHero',
             "POST",
-            200,
+            204,
             {
                 'id':id
             },
             false,
             'account'
         )
-        //window.location.href = document.getElementById("changeCharacter").getAttribute("data-action");
+        if(res !== false)
+        window.location.href = document.getElementById("changeCharacter").getAttribute("data-action");
     }
 }
 

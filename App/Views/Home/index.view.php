@@ -1,3 +1,9 @@
+<?php
+/** @var \App\Core\IAuthenticator $auth */
+/** @var \App\Core\LinkGenerator $link */
+
+?>
+
 <head>
     <link rel="stylesheet" href="/public/css/homepage.css">
 </head>
@@ -9,7 +15,8 @@
         You can also check out other popular characters created by other users!</p>
 </div>
 <div class="buttonAddYouHero">
-    <button type="button" class=" btn btn-success">Add your Hero -></button>
+    <button type="button" class=" btn btn-success" onclick="window.location.href='<?= $auth->isLogged() ? $link->url("account.index")
+                                                                : $link->url("auth.index") ?>'">Add your Hero -></button>
 </div>
 <div class="quote rounded-5">
     <img class="circle-image" src="/public/img/Iroh.jpg" alt="Iroh"/>

@@ -3,6 +3,7 @@
 namespace App\Controllers;
 
 use App\Core\AControllerBase;
+use App\Core\Responses\EmptyResponse;
 use App\Core\Responses\Response;
 use App\Helpers\FileStorage;
 use App\Models\Character;
@@ -68,7 +69,7 @@ class AccountController extends AControllerBase
                 throw new HTTPException(400, 'Error delete character');
             }
             $character->delete();
-
+            return new EmptyResponse();
         } else {
             throw new HTTPException(400, 'Error delete character');
         }
