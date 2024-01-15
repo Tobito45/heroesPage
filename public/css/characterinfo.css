@@ -178,6 +178,11 @@ textarea {
     border-radius: 2px;
 }
 
+
+.removeButtonReview {
+    display: flex;
+}
+
 @media (max-width: 768px) {
     .heroImageAndInfo {
         display: flex;

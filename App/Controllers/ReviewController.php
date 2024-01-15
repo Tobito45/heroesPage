@@ -41,7 +41,7 @@ class ReviewController extends AControllerBase
 
             return new EmptyResponse();
         } else {
-            throw new HTTPException(400, 'The user regestration failed, please, reload the page and try again');
+            throw new HTTPException(400, 'Review edit error');
         }
     }
 
@@ -53,15 +53,21 @@ class ReviewController extends AControllerBase
 
             &&  property_exists($jsonData, 'id_character')
             &&  property_exists($jsonData, 'name')
-            && !empty($jsonData->id_character) && !empty($jsonData->name)
-                && $this->app->getAuth()->getLoggedUserName() == "admin") {
+            && !empty($jsonData->id_character) && !empty($jsonData->name)) {
 
-            $review = Review::getAll("id_character = ? AND author = ?", [$jsonData->id_character, $jsonData->name])[0];
-            $review->delete();
+            $reviews = Review::getAll("id_character = ? AND author = ?", [$jsonData->id_character, $jsonData->name]);
+            if (count($reviews) > 0) {
+                if ($this->app->getAuth()->getLoggedUserName() == "admin" ||
+                    $reviews[0]->getAuthor() == $this->app->getAuth()->getLoggedUserName()) {
+                    $reviews[0]->delete();
+                }
+            } else {
+                return new EmptyResponse();
+            }
 
             return new EmptyResponse();
         } else {
-            throw new HTTPException(400, 'The user regestration failed, please, reload the page and try again');
+            throw new HTTPException(400, 'Removing review error');
         }
     }
 }

@@ -40,6 +40,11 @@ class AuthorizationAPI {
     }
 
     async regestration(login, email, password) {
+        if (login.trim() === "" || password.trim() === "" || email.trim() === "") {
+            document.getElementById("errorTextRegistration").innerText = "Fill all fields!"
+            return;
+        }
+
         const result = await DataService.sendRequest(
             'registration',
             "POST",
@@ -61,6 +66,12 @@ class AuthorizationAPI {
     }
 
     async login(login, password) {
+        if (login.trim() === "" || password.trim() === "") {
+            document.getElementById("errorTextLogin").innerText = "Fill all fields!"
+            return;
+        }
+
+
         const result = await DataService.sendRequest(
             'signIn',
             "POST",

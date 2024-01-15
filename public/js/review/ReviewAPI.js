@@ -4,6 +4,7 @@ class ReviewAPI {
     #inputGrade = null
     #button = null
     #confirmReview = null
+    #divReview = null;
     constructor() {
         this.#inputGrade = document.getElementById("inputGrade");
         if(this.#inputGrade != null) {
@@ -28,9 +29,20 @@ class ReviewAPI {
 
         let buttonsDeleteReview = document.getElementsByClassName("parentDiv");
         for(let i = 0; i < buttonsDeleteReview.length; i++) {
-            buttonsDeleteReview[i].getElementsByClassName("deleteReview")[0].addEventListener("click", () => {
-                this.removeReview(buttonsDeleteReview[i].getElementsByClassName("nameAuthor")[0].innerText,
-                    characterId,buttonsDeleteReview[i]).then()
+            if(buttonsDeleteReview[i].getElementsByClassName("deleteReview").length !== 0) {
+                buttonsDeleteReview[i].getElementsByClassName("deleteReview")[0].addEventListener("click", () => {
+                    this.removeReview(buttonsDeleteReview[i].getElementsByClassName("nameAuthor")[0].innerText,
+                        characterId, buttonsDeleteReview[i]).then()
+                })
+            }
+        }
+
+        this.#divReview = document.getElementById("mainReview");
+
+        if(this.#divReview != null) {
+            this.#divReview.getElementsByClassName("deleteReview")[0].addEventListener("click", () => {
+                this.removeReview( this.#divReview.getElementsByClassName("nameAuthor")[0].innerText,
+                    characterId, null).then()
             })
         }
 
@@ -69,7 +81,14 @@ class ReviewAPI {
             'review'
         )
         if(result === true) {
-            block.remove();
+            if(block !== null) {
+                block.remove();
+            } else {
+                console.log(document.getElementById("areaReview").value);
+
+                document.getElementById("areaReview").value = "";
+                document.getElementById("inputGrade").value = "1";
+            }
         }
     }
 }
