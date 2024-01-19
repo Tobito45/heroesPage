@@ -1,5 +1,5 @@
 body {
-    background-image: url("../img/backgrounds/background.jpg");
+    background-image: url("../../img/backgrounds/background.jpg");
 }
 
 /* quote */
@@ -13,7 +13,7 @@ body {
     padding-bottom: 10px;
 }
 .quote div p {
-    font-family: 'Open Sans', sans-serif;
+    font-family: var(--basic--fond);
     font-size: 200%;
     font-style: italic;
     color:white;

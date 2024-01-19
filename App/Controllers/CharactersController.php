@@ -28,6 +28,11 @@ class CharactersController extends AControllerBase
         return $this->html(["character" => Character::getOne($id)]);
     }
 
+    public function characterAll() : Response
+    {
+        return $this->html();
+    }
+
     public function saveCharacterName() : Response
     {
         $jsonData = $this->app->getRequest()->getRawBodyJSON();

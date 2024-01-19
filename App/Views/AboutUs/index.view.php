@@ -1,5 +1,5 @@
 <head>
-    <link rel="stylesheet" href="/public/css/aboutuspage.css">
+    <link rel="stylesheet" href="/public/css/basic/aboutuspage.css">
 </head>
 <div class="textOfMainPage rounded-5">
     <h1 class="text-white">"About us"</h1>

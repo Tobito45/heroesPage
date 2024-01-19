@@ -5,7 +5,7 @@
 ?>
 
 <head>
-    <link rel="stylesheet" href="/public/css/homepage.css">
+    <link rel="stylesheet" href="/public/css/basic/homepage.css">
 </head>
 <div class="textOfMainPage rounded-5">
     <h1 class="text-white">Heroes page!</h1>

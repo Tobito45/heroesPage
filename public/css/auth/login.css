@@ -1,5 +1,5 @@
 body {
-    background-image: url("../img/backgrounds/login.png");
+    background-image: url("../../img/backgrounds/login.png");
 }
 .buttonBack {
     width: 100px;
@@ -8,8 +8,8 @@ body {
 
 
 h1, h6, p, a {
-    font-family: 'Open Sans', sans-serif;
-    color: #70D907 !important;
+    font-family: var(--basic--fond);
+    color: var(--main--green-color) !important;
 }
 h1 {
     font-weight: bold;

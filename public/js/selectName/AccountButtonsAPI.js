@@ -1,7 +1,9 @@
 import {DataService} from "../DataService.js";
 
-class NameSelect {
+class AccountButtonsAPI {
     #panel = null;
+
+
     constructor() {
         this.#panel = document.getElementById("askPanel");
 
@@ -51,7 +53,8 @@ class NameSelect {
         )
         console.log(res);
         if(res === -1) {
-            console.log("this person already exists");
+            document.getElementById("errorText").style.display = "block";
+            setTimeout(() => document.getElementById("errorText").style.display = "none", 3000);
         } else {
             window.location.href = document.getElementById("addCharacter").getAttribute("data-action") + "&character=" + res;
         }
@@ -71,7 +74,12 @@ class NameSelect {
         if(res !== false)
         window.location.href = document.getElementById("changeCharacter").getAttribute("data-action");
     }
+
+
+     isEmailValid(value) {
+        return EMAIL_REGEXP.test(value);
+    }
 }
 
 
-export {NameSelect};
+export {AccountButtonsAPI};

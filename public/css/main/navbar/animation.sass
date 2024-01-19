@@ -1,0 +1,31 @@
+.navbar-nav > li {
+  display: grid;
+  padding-left: 10px;
+  padding-right: 10px;
+  justify-items: center;
+
+  a {
+    font-family: var(--basic--fond);
+    font-weight: bold;
+    font-size: 24px;
+    display: grid;
+    justify-items: center;
+    padding-bottom: 8px;
+
+    img {
+      display: none;
+  }
+}
+
+  a:hover, a img:hover, .selectedNavItem {
+    color: var(--main--green-color) !important;
+    padding-bottom: 0;
+}
+
+  a:hover img, .selectedNavItem img {
+    display: flex;
+    width: 90%;
+    height: 5px;
+    margin-top: 3px;
+}
+}

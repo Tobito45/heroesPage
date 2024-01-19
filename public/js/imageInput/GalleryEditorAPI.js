@@ -1,6 +1,6 @@
 import {DataService} from "../DataService.js";
 
-class GalleryEditor {
+class GalleryEditorAPI {
     static #countCollums = 3;
     static #buttonHTML = "<a class=\"link-light link-opacity-75-hover\"><svg xmlns=\"http://www.w3.org/2000/svg\" width=\"16\" height=\"16\" fill=\"currentColor\" class=\"bi bi-trash\" viewBox=\"0 0 16 16\">\n" +
         "                <path d=\"M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5m2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5m3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0z\"/>\n" +
@@ -13,7 +13,7 @@ class GalleryEditor {
     }
 
     createDeleters() {
-        for (let i = 1; i <= GalleryEditor.#countCollums; i++) {
+        for (let i = 1; i <= GalleryEditorAPI.#countCollums; i++) {
             let galleryElement = document.getElementById("gallery" + i);
             for(let i = 0; i < galleryElement.children.length - 1; i += 2) {
                 let image = galleryElement.children.item(i + 1)
@@ -29,7 +29,7 @@ class GalleryEditor {
     }
 
     createAddeters() {
-        for (let i = 1; i <= GalleryEditor.#countCollums; i++) {
+        for (let i = 1; i <= GalleryEditorAPI.#countCollums; i++) {
             let inputElement = document.getElementById("galleryAddButton" + i);
             let galleryElement = document.getElementById("gallery" + i);
             galleryElement.addEventListener("change", async() => {
@@ -42,7 +42,7 @@ class GalleryEditor {
                         newImage.alt = file.name;
 
                         let buttonDelete = document.createElement("a");
-                        buttonDelete.innerHTML = GalleryEditor.#buttonHTML;
+                        buttonDelete.innerHTML = GalleryEditorAPI.#buttonHTML;
 
                         await this.sendImage(file, i).then(async () => {
 
@@ -121,4 +121,4 @@ class GalleryEditor {
     }
 }
 
-export {GalleryEditor};
+export {GalleryEditorAPI};

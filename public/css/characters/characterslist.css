@@ -15,14 +15,20 @@
 
 }
 .characters p {
-    font-family: 'Open Sans', sans-serif;
+    font-family: var(--basic--fond);
     font-size: 100%;
     font-weight: bold;
     color: white;
 }
 
+.buttonAllHeroes {
+    display: flex;
+    justify-content: center;
+    padding-top: 10px;
+}
+
 .characters div  {
-    background-image: url("../img/charactersPage/cirkulTest.png");
+    background-image: url("../../img/charactersPage/cirkulTest.png");
     background-repeat: no-repeat;
     background-position: center;
     background-size: 80% 60%;

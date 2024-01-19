@@ -1,6 +1,6 @@
 import {DataService} from "../DataService.js";
 
-class BaseInputEditObj {
+class BaseInputEditAPI {
     #saveElementText = null;
     #saveDivElement = null;
     _elementText = null;
@@ -94,4 +94,4 @@ class BaseInputEditObj {
 
 
 
-export {BaseInputEditObj};
+export {BaseInputEditAPI};

@@ -1,6 +1,6 @@
 import {DataService} from "../DataService.js";
 
-class InputImageObj {
+class InputImageObjAPI {
     #formImage = null
     #image = null
      constructor(index) {
@@ -44,4 +44,4 @@ class InputImageObj {
 }
 
 
-export {InputImageObj};
+export {InputImageObjAPI};

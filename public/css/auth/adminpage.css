@@ -1,12 +1,12 @@
 body{
-    background-color: #1e2027 !important;
+    background-color: var(--main--background-color) !important;
 }
 
 h1 {
-    font-family: 'Open Sans', sans-serif;
+    font-family: var(--basic--fond);
     font-size: 200%;
     font-weight: bold;
-    color: #70D907;
+    color: var(--main--green-color);
 }
 .askPanel {
     position: fixed;

@@ -1,8 +1,11 @@
 import {DataService} from "../DataService.js";
 
 class AuthorizationAPI {
+    static #EMAIL_REGEXP = /^(([^<>()[\].,;:\s@"]+(\.[^<>()[\].,;:\s@"]+)*)|(".+"))@(([^<>()[\].,;:\s@"]+\.)+[^<>()[\].,;:\s@"]{2,})$/iu;
+
     #panelLogin = null
     #panelRegistration = null
+
     constructor() {
         this.#panelLogin = document.getElementById("login")
         this.#panelRegistration = document.getElementById("registration")
@@ -42,6 +45,12 @@ class AuthorizationAPI {
     async regestration(login, email, password) {
         if (login.trim() === "" || password.trim() === "" || email.trim() === "") {
             document.getElementById("errorTextRegistration").innerText = "Fill all fields!"
+            return;
+        }
+
+        console.log(email + " " + AuthorizationAPI.isEmailValid(email));
+        if(!AuthorizationAPI.isEmailValid(email)) {
+            document.getElementById("errorTextRegistration").innerText = "Error email field"
             return;
         }
 
@@ -89,6 +98,10 @@ class AuthorizationAPI {
         } else {
             document.getElementById("errorTextLogin").innerText = result;
         }
+    }
+
+    static isEmailValid(value) {
+        return AuthorizationAPI.#EMAIL_REGEXP.test(value);
     }
 }
 

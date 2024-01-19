@@ -1,0 +1,7 @@
+body {
+    background-color: var(--main--background-color) !important;
+}
+
+.Footer {
+    margin-top: 3%;
+}

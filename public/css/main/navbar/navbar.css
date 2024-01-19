@@ -8,7 +8,7 @@
     border-color: white;
 }
 .navbar-toggler-icon {
-    background-image: url("../img/menu-bar.png") !important;
+    background-image: url("../../../img/menu-bar.png") !important;
 }
 
 .navbar-nav {
@@ -21,7 +21,7 @@
     justify-items: center;
 }
 .navbar-nav>li a{
-    font-family: 'Open Sans', sans-serif;
+    font-family: var(--basic--fond);
     font-weight: bold;
     font-size: 24px;
     display: grid;
@@ -33,7 +33,7 @@
 }
 
 .navbar-nav>li a:hover,.navbar-nav>li a:hover img, .navbar-nav>li a img:hover, .navbar-nav>li .selectedNavItem{
-    color: #70D907 !important;
+    color: var(--main--green-color) !important;
     padding-bottom: 0;
 }
 

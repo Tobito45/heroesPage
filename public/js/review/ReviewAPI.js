@@ -4,6 +4,7 @@ class ReviewAPI {
     #inputGrade = null
     #button = null
     #confirmReview = null
+    #removeReview = null
     #divReview = null;
     constructor() {
         this.#inputGrade = document.getElementById("inputGrade");
@@ -20,6 +21,7 @@ class ReviewAPI {
         }
         this.#button = document.getElementById("buttonSubmitReview")
         this.#confirmReview = document.getElementById("confirmReview")
+        this.#removeReview = document.getElementById("removeReview")
         if(this.#button != null) {
             this.#button.addEventListener("click", () => {
                 this.editOrCreateReview(document.getElementById("areaReview").value, this.#inputGrade.value).then()
@@ -84,7 +86,10 @@ class ReviewAPI {
             if(block !== null) {
                 block.remove();
             } else {
-                console.log(document.getElementById("areaReview").value);
+                if(document.getElementById("areaReview").value !== "") {
+                    this.#removeReview.style.display = "block";
+                    setTimeout(() => this.#removeReview.style.display = "none", 3000);
+                }
 
                 document.getElementById("areaReview").value = "";
                 document.getElementById("inputGrade").value = "1";
