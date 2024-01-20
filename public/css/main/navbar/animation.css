@@ -1,0 +1,29 @@
+.navbar-nav > li {
+  display: grid;
+  padding-left: 10px;
+  padding-right: 10px;
+  justify-items: center;
+}
+.navbar-nav > li a {
+  font-family: var(--basic--fond);
+  font-weight: bold;
+  font-size: 24px;
+  display: grid;
+  justify-items: center;
+  padding-bottom: 8px;
+}
+.navbar-nav > li a img {
+  display: none;
+}
+.navbar-nav > li a:hover, .navbar-nav > li a img:hover, .navbar-nav > li .selectedNavItem {
+  color: var(--main--green-color) !important;
+  padding-bottom: 0;
+}
+.navbar-nav > li a:hover img, .navbar-nav > li .selectedNavItem img {
+  display: flex;
+  width: 90%;
+  height: 5px;
+  margin-top: 3px;
+}
+
+/*# sourceMappingURL=animation.css.map */

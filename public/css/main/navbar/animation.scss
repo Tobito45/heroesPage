@@ -14,18 +14,18 @@
 
     img {
       display: none;
+    }
   }
-}
 
   a:hover, a img:hover, .selectedNavItem {
     color: var(--main--green-color) !important;
     padding-bottom: 0;
-}
+  }
 
   a:hover img, .selectedNavItem img {
     display: flex;
     width: 90%;
     height: 5px;
     margin-top: 3px;
-}
+  }
 }
