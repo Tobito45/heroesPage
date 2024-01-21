@@ -1,12 +1,18 @@
-.Footer {
+.footer {
     background-color: rgba(1,1,1,80%);
 }
-.Footer span {
+
+
+.footer span {
     color: white;
     font-family: var(--basic--fond);
     margin-left: 50px;
 }
-.Footer li {
+.footer li {
     margin-right: 10px;
+    color: white !important;
+}
+
+.footer a {
     color: white !important;
 }

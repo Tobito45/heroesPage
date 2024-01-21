@@ -7,13 +7,13 @@ body {
 }
 
 
-h1, h6, p, a {
+.container h1, .container h6, .container p, .container a {
     font-family: var(--basic--fond);
     color: var(--main--green-color) !important;
 }
-h1 {
+.container h1 {
     font-weight: bold;
 }
-.Footer {
+.footer {
     margin-top: 23ex;
 }

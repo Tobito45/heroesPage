@@ -1,7 +1,7 @@
 import {DataService} from "../DataService.js";
+import {EmailDetecter} from "../EmailDetecter.js";
 
 class AuthorizationAPI {
-    static #EMAIL_REGEXP = /^(([^<>()[\].,;:\s@"]+(\.[^<>()[\].,;:\s@"]+)*)|(".+"))@(([^<>()[\].,;:\s@"]+\.)+[^<>()[\].,;:\s@"]{2,})$/iu;
 
     #panelLogin = null
     #panelRegistration = null
@@ -49,7 +49,7 @@ class AuthorizationAPI {
         }
 
         console.log(email + " " + AuthorizationAPI.isEmailValid(email));
-        if(!AuthorizationAPI.isEmailValid(email)) {
+        if(!EmailDetecter.isEmailValid(email)) {
             document.getElementById("errorTextRegistration").innerText = "Error email field"
             return;
         }
@@ -100,9 +100,7 @@ class AuthorizationAPI {
         }
     }
 
-    static isEmailValid(value) {
-        return AuthorizationAPI.#EMAIL_REGEXP.test(value);
-    }
+
 }
 
 export {AuthorizationAPI};

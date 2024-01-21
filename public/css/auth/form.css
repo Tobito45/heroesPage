@@ -17,12 +17,12 @@
     box-shadow: 0 0 0 0.25rem rgba(112,208,151,.25);
 }
 
-input:focus {
+input:focus, textarea:focus {
     outline: 2px solid #70D097 !important;
 }
-input::placeholder {
+input::placeholder, textarea::placeholder {
 }
-input {
+input, textarea {
     background-color: #808681 !important;
     border-color: #2c2d2d !important;
     color: #dadada !important;

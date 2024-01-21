@@ -7,6 +7,9 @@ use App\Core\Responses\EmptyResponse;
 use App\Core\Responses\Response;
 use App\Helpers\FileStorage;
 use App\Models\Character;
+use App\Models\GalleryPictures;
+use App\Models\Review;
+use App\Models\User;
 
 /**
  * Class HomeController
@@ -54,7 +57,7 @@ class AccountController extends AControllerBase
 
             return $this->json($character->getId());
         } else {
-            throw new HTTPException(400, 'The user regestration failed, please, reload the page and try again');
+            throw new HTTPException(400, 'Error creating hero');
         }
     }
 
@@ -65,14 +68,32 @@ class AccountController extends AControllerBase
             && property_exists($jsonData, 'id') && !empty($jsonData->id)) {
 
             $character = Character::getOne($jsonData->id);
-            if($character->getAuthor() != $this->app->getAuth()->getLoggedUserName() && $character->getAuthor() != "admin") {
+            $userRole = User::getAll("name = ?", [$this->app->getAuth()->getLoggedUserName()])[0]->getRole();
+            if($character->getAuthor() != $this->app->getAuth()->getLoggedUserName() &&
+                $userRole != "admin") {
                 throw new HTTPException(400, 'Error delete character');
             }
+
+
+            $pictures = GalleryPictures::getAll('id_character = ?', [$character->getId()]);
+            foreach ($pictures as $picture) {
+                if ($picture != null) {
+                    FileStorage::deleteFile($picture->getPicture());
+                    $picture->delete();
+                }
+            }
+            $reviews = Review::getAll('id_character = ?', [$character->getId()]);
+            foreach ($reviews as $review) {
+                if ($review != null) {
+                    $review->delete();
+                }
+            }
+
+
             $character->delete();
             return new EmptyResponse();
         } else {
-            throw new HTTPException(400, 'Error delete character');
+            return $this->json(false);
         }
-        return $this->json(false);
     }
 }

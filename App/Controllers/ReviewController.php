@@ -7,6 +7,7 @@ use App\Core\Responses\EmptyResponse;
 use App\Core\Responses\Response;
 use App\Models\Character;
 use App\Models\Review;
+use App\Models\User;
 
 class ReviewController extends AControllerBase
 {
@@ -56,8 +57,9 @@ class ReviewController extends AControllerBase
             && !empty($jsonData->id_character) && !empty($jsonData->name)) {
 
             $reviews = Review::getAll("id_character = ? AND author = ?", [$jsonData->id_character, $jsonData->name]);
+            $userRole = User::getAll("name = ?", [$this->app->getAuth()->getLoggedUserName()])[0]->getRole();
             if (count($reviews) > 0) {
-                if ($this->app->getAuth()->getLoggedUserName() == "admin" ||
+                if ($userRole == "admin" ||
                     $reviews[0]->getAuthor() == $this->app->getAuth()->getLoggedUserName()) {
                     $reviews[0]->delete();
                 }

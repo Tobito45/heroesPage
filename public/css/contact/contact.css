@@ -1,0 +1,42 @@
+.footer {
+    margin-top: 4%;
+}
+
+body {
+    background-image: url("../../img/backgrounds/contact.jpg");
+}
+
+textarea {
+    resize: none !important;
+}
+
+.container {
+    background-color: var(--main--background-color) !important;
+    border-color: var(--main--green-color) !important;
+    border-style: solid;
+    border-width: 3px !important;
+}
+
+.greenText {
+    color:  var(--main--green-color) !important;
+}
+
+.whiteTextContact {
+    color: #dadada !important;
+
+}
+
+.backPanel {
+    background-color: #1a1a1c !important;
+}
+
+.buttonsSuccess {
+    display: flex;
+    align-items: center
+}
+
+.buttonsSuccess h5 {
+    text-align: center !important;
+    margin-left: 10px;
+    margin-bottom: 0;
+}

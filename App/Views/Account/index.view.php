@@ -5,7 +5,7 @@
     <link rel="stylesheet" href="/public/css/auth/adminpage.css">
     <link rel="stylesheet" href="/public/css/characters/characterslist.css">
     <link rel="stylesheet" href="/public/css/auth/form.css">
-    <script type="module" src="/public/js/selectName/AccountButtonsCreate.js"></script>
+    <script type="module" src="/public/js/acoount/AccountButtonsCreate.js"></script>
 </head>
 <div class="askPanel" id="askPanel" style="display: none">
     <div class=" parentLoginPanel">

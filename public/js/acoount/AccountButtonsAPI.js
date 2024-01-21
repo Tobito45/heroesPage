@@ -71,6 +71,7 @@ class AccountButtonsAPI {
             false,
             'account'
         )
+        console.log(res)
         if(res !== false)
         window.location.href = document.getElementById("changeCharacter").getAttribute("data-action");
     }
