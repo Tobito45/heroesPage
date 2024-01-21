@@ -89,6 +89,9 @@ class AccountController extends AControllerBase
                 }
             }
 
+            if($character->getPicture() != null) {
+                FileStorage::deleteFile($character->getPicture());
+            }
 
             $character->delete();
             return new EmptyResponse();
