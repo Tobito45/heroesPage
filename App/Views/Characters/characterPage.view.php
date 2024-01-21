@@ -304,8 +304,8 @@ $userRole = User::getAll("name = ?", [$this->app->getAuth()->getLoggedUserName()
                 else echo ""; ?></textarea></p>
         <div class="reviewButtons">
             <button id="buttonSubmitReview" class="btn btn-success">Submit</button>
-            <h5 id="confirmReview">Review was saved...</h5>
-            <h5 id="removeReview">Review was removed...</h5>
+            <h5 id="confirmReview">Review was saved</h5>
+            <h5 id="removeReview">Review was removed</h5>
         </div>
     </div>
     <?php endif; ?>

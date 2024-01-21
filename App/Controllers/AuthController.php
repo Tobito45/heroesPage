@@ -49,7 +49,7 @@ class AuthController extends AControllerBase
 
             return $this->json($logged->value);
         } else {
-            throw new HTTPException(400, 'The user regestration failed, please, reload the page and try again');
+            throw new HTTPException(400, 'The user sign in failed, please, reload the page and try again');
 
         }
     }

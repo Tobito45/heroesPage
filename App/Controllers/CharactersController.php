@@ -51,7 +51,7 @@ class CharactersController extends AControllerBase
             return new EmptyResponse();
 
         } else {
-            throw new HTTPException(400, 'Bad name file');
+            throw new HTTPException(400, 'Bad name character');
         }
     }
 
@@ -131,7 +131,7 @@ class CharactersController extends AControllerBase
             $lastValue = end($picture);
             return $this->json($lastValue);
         } else {
-            throw new HTTPException(400, 'Bad picture structure');
+            throw new HTTPException(400, 'Bad picture data');
         }
     }
 }

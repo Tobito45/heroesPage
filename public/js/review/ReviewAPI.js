@@ -65,6 +65,7 @@ class ReviewAPI {
         )
 
         if(result === true) {
+            this.#removeReview.style.display = "none";
             this.#confirmReview.style.display = "block";
             setTimeout(() => this.#confirmReview.style.display = "none", 3000);
         }
@@ -87,6 +88,7 @@ class ReviewAPI {
                 block.remove();
             } else {
                 if(document.getElementById("areaReview").value !== "") {
+                    this.#confirmReview.style.display = "none";
                     this.#removeReview.style.display = "block";
                     setTimeout(() => this.#removeReview.style.display = "none", 3000);
                 }
