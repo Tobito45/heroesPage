@@ -48,7 +48,6 @@ class AuthorizationAPI {
             return;
         }
 
-        console.log(email + " " + AuthorizationAPI.isEmailValid(email));
         if(!EmailDetecter.isEmailValid(email)) {
             document.getElementById("errorTextRegistration").innerText = "Error email field"
             return;

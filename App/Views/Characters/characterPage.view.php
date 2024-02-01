@@ -7,7 +7,6 @@
 
 use App\Models\Character;
 use App\Models\User;
-
 $userRole = User::getAll("name = ?", [$this->app->getAuth()->getLoggedUserName()])[0]->getRole();
 ?>
 <head>
